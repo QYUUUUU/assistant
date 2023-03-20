@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>{% block title %}Welcome!{% endblock %}</title>
+        <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>⚫️</text></svg>">
+        <link rel="icon" href="/favicon.ico">
+        <script>
+            var discussion="{{path('discussion')}}";
+        </script>
+        {% block stylesheets %}
+            {{ encore_entry_link_tags('fonts') }}
+            {{ encore_entry_link_tags('bootstrap') }}
+            {{ encore_entry_link_tags('app') }}
+        {% endblock %}
+
+        {% block javascripts %}
+            {{ encore_entry_script_tags('app') }}
+        {% endblock %}
+    </head>
+     <body>
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+            <div class="container">
+                <a class="navbar-brand" href="/">My Chat App</a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+            </div>
+        </nav>
+
+        <div class="container mt-3 px-3">
+            {% block body %}{% endblock %}
+        </div>
+
+        <footer class="bg-dark text-light py-3 fixed-bottom">
+            <div class="container text-center">
+                &copy; 2023 My Chat App
+            </div>
+        </footer>
+
+        {% block footer %}
+        {% endblock %}
+    </body>
+</html>

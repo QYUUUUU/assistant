@@ -1,0 +1,33 @@
+{% extends 'base.html.twig' %}
+
+{% block stylesheets %}
+	{{ parent() }}
+{% endblock %}
+
+{% block body %}
+	<div class="card">
+		<div class="card-header">
+			ChatBot !
+		</div>
+		<div id="error" class="error"></div>
+		<div class="card-body chat-body">
+			<div class="chat-message">
+				<div class="chat-message-content">
+					<p>Je vais t'aider à coder !</p>
+				</div>
+			</div>
+		</div>
+		<div class="card-footer">
+			<form id="prompt-form">
+				<div class="row align-items-center">
+					<div class="col-md-11">
+						<textarea id="prompt-field" class="form-control" placeholder="Écrire un message"></textarea>
+					</div>
+					<div class="col-md-1">
+						<button type="submit" class="send-button"></button>
+					</div>
+				</div>
+			</form>
+		</div>
+	</div>
+{% endblock %}

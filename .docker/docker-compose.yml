@@ -1,0 +1,13 @@
+version: "3"
+
+services:
+  # ~~~~~~ APACHE WEB / PHP ~~~~~~
+
+  web:
+    build: anet_web
+    volumes:
+      - ..:/var/www/html/
+    #      - ~/.bash_history:/root/.bash_history
+    ports:
+      - "80:80"
+      - "443:443"

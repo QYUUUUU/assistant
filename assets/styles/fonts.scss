@@ -1,0 +1,45 @@
+/**
+ * Polices de texte
+ */
+@mixin fontface($name, $path, $weight: null, $style: null, $exts: eot woff2 woff ttf svg) {
+  $src: null;
+  $extmods: (
+          eot: "?",
+          svg: "#" + str-replace($name, " ", "_")
+  );
+  $formats: (
+          otf: "opentype",
+          ttf: "truetype"
+  );
+  @each $ext in $exts {
+    $extmod: if(map-has-key($extmods, $ext), $ext + map-get($extmods, $ext), $ext);
+    $format: if(map-has-key($formats, $ext), map-get($formats, $ext), $ext);
+    $src: append($src, url(quote($path + "." + $extmod)) format(quote($format)), comma);
+  }
+  @font-face {
+    font-family: quote($name);
+    font-style: $style;
+    font-weight: $weight;
+    font-display: swap;
+    src: $src;
+  }
+}
+
+@include fontface('Montserrat', '../fonts/Montserrat-Thin', 100, normal, woff2 woff ttf);
+@include fontface('Montserrat', '../fonts/Montserrat-ThinItalic', 100, italic, woff2 woff ttf);
+@include fontface('Montserrat', '../fonts/Montserrat-ExtraLight', 200, normal, woff2 woff ttf);
+@include fontface('Montserrat', '../fonts/Montserrat-ExtraLightItalic', 200, italic, woff2 woff ttf);
+@include fontface('Montserrat', '../fonts/Montserrat-Light', 300, normal, woff2 woff ttf);
+@include fontface('Montserrat', '../fonts/Montserrat-LightItalic', 300, italic, woff2 woff ttf);
+@include fontface('Montserrat', '../fonts/Montserrat-Regular', 400, normal, woff2 woff ttf);
+@include fontface('Montserrat', '../fonts/Montserrat-RegularItalic', 400, italic, woff2 woff ttf);
+@include fontface('Montserrat', '../fonts/Montserrat-Medium', 500, normal, woff2 woff ttf);
+@include fontface('Montserrat', '../fonts/Montserrat-MediumItalic', 500, italic, woff2 woff ttf);
+@include fontface('Montserrat', '../fonts/Montserrat-SemiBold', 600, normal, woff2 woff ttf);
+@include fontface('Montserrat', '../fonts/Montserrat-SemiBoldItalic', 600, italic, woff2 woff ttf);
+@include fontface('Montserrat', '../fonts/Montserrat-Bold', 700, normal, woff2 woff ttf);
+@include fontface('Montserrat', '../fonts/Montserrat-BoldItalic', 700, italic, woff2 woff ttf);
+@include fontface('Montserrat', '../fonts/Montserrat-ExtraBold', 800, normal, woff2 woff ttf);
+@include fontface('Montserrat', '../fonts/Montserrat-ExtraBoldItalic', 800, italic, woff2 woff ttf);
+@include fontface('Montserrat', '../fonts/Montserrat-Black', 900, normal, woff2 woff ttf);
+@include fontface('Montserrat', '../fonts/Montserrat-BlackItalic', 900, italic, woff2 woff ttf);
